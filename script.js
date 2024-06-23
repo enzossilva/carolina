@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
+// Coloque todo o seu código dentro de uma função para ser executada após o carregamento do DOM
+function setupCarousel() {
     const container = document.querySelector('.carousel-container');
     const slides = document.querySelectorAll('.carousel-slide');
     const slideWidth = slides[0].clientWidth;
@@ -42,4 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
     container.addEventListener('touchend', function () {
         // Nenhuma ação necessária aqui, apenas remover o estado de rolagem é suficiente
     });
+}
+
+// Esperar o DOM estar completamente carregado para executar o código
+document.addEventListener('DOMContentLoaded', function () {
+    setupCarousel(); // Chamar a função para configurar o carrossel
 });
