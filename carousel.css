@@ -11,37 +11,35 @@ html {
 }
 
 .carousel {
-    width: 96.5%;
-    /* Ocupa quase toda a largura da viewport */
+    width: 100%;
     height: 100vh;
-    /* Ocupa toda a altura da viewport */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2% 2% 2% 2%;
+    margin: 2vh;
 }
 
 .carousel-container {
     display: flex;
     width: 100%;
-    /* Ajusta a largura total dos slides */
     overflow: hidden;
-    /* Barra de rolagem horizontal */
 }
 
 .carousel-slide {
     flex: none;
-    margin-right: 2%;
-    /* Espaçamento entre os slides */
+    margin-right: 10px; /* Espaçamento entre os slides */
 }
 
 .carousel-slide img {
     width: auto;
-    height: 80vh;
-    object-fit: cover;
-    gap: 2px;
-    /* Mantém proporção da imagem e cobre o espaço disponível */
+    height: 90vh; /* Ajustado para cobrir todo o espaço do slide */
+    object-fit: cover; /* Mantém proporção e cobre o espaço do slide */
 }
 
-/* Responsive Design */
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .carousel-slide {
+        margin-right: 5px; /* Ajuste de margem menor para telas menores */
+    }
+}
