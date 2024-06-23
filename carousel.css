@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel {
+    width: 96.5%;
+    /* Ocupa quase toda a largura da viewport */
+    height: 100vh;
+    /* Ocupa toda a altura da viewport */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 2% 2% 2%;
+}
+
+.carousel-container {
+    display: flex;
+    width: 100%;
+    /* Ajusta a largura total dos slides */
+    overflow: hidden;
+    /* Barra de rolagem horizontal */
+}
+
+.carousel-slide {
+    flex: none;
+    margin-right: 2%;
+    /* Espaçamento entre os slides */
+}
+
+.carousel-slide img {
+    width: auto;
+    height: 80vh;
+    object-fit: cover;
+    gap: 2px;
+    /* Mantém proporção da imagem e cobre o espaço disponível */
+}
+
+/* Responsive Design */

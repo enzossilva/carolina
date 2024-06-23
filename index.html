@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carolina</title>
+    <link rel="stylesheet" href="carousel.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    <nav class="navbar">
+        <ul>
+            <li class="carolina">
+                <a href="index.html">CAROLINA</a>
+            </li>
+            <li class="work">
+                <a href="work.html"> WORK</a>
+            </li>
+            <li class="films">
+                <a href="films.html">FILMS</a>
+            </li>
+            <li class="contact">
+                <a href="contact.html">CONTACT</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <div class="carousel">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <a href="rizoma.html">
+                    <img src="images/RIZOMA/8548.JPG" alt="Imagem 1">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="alumbramento.html">
+                    <img src="images/ALUMBRAMENTO/39.JPG" alt="Imagem 2">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="contra.html">
+                    <img src="images/CONTRA/151.jpg.JPG" alt="Imagem 3">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="mar_salgado.html">
+                    <img src="images/MARSALGADO/9071.JPG" alt="Imagem 4"></a>
+            </div>
+            <div class="carousel-slide">
+                <a href="gemeos.html">
+                    <img src="images/GEMEOS/1139.JPG" alt="Imagem 1">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="pra_todo_sempre.html">
+                    <img src="images/PRATODOSEMPRE/4.JPG" alt="Imagem 2">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="zziper.html">
+                    <img src="images/ZZIPER/9803.JPG" alt="Imagem 3">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="fogueirinhas.html">
+                    <img src="images/FOGUEIRINHAS/6251.JPG" alt="Imagem 4">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="talvez_sonho.html">
+                    <img src="images/TALVEZSONHO/5832.JPG" alt="Imagem 2">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="tenta_me.html">
+                    <img src="images/TENTAMEDENOVO/73.JPG" alt="Imagem 3">
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.location.hash) {
+                var hash = window.location.hash.substring(1); // Remover o símbolo #
+                if (hash) {
+                    window.location.href = hash + ".html";
+                }
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
