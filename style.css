@@ -1,34 +1,31 @@
 .navbar ul {
     list-style: none;
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
-    margin-top: 0.5%;
     width: 100%;
+    
     justify-content: space-around;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
     display: flex;
 }
 
 .navbar .carolina {
+    margin-top: 1.5%;
     margin-right: auto;
 }
 
 .navbar .work,
 .navbar .films,
 .navbar .contact {
+    margin-top: 1.5%;
     margin-left: auto;
 }
 
 .navbar .contact {
+    margin-top: 1.5%;
     margin-right: 2%;
 }
 
 .navbar {
     width: 100%;
-    height: 30%;
+    height: 20%;
     align-items: center;
     display: flex;
     margin: 0.7%;
@@ -36,6 +33,7 @@
 
 header {
     width: 100%;
+    height: 8.3%;
     inline-size: 1;
     position: fixed;
     top: 0;
@@ -49,19 +47,15 @@ header {
     text-decoration: none;
     font-weight: bold;
     font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.navbar li {
-    margin: 0 15px;
-    margin-top: 1.5%;
-}
 
 .gallery {
     column-width: 30vw;
-    margin: 2% 2% 2% 1.5%;
+    margin: 0 2% 2% 1.5%;
     column-gap: 10px;
     row-gap: 30px;
-    margin-top: 6.5%;
 }
 
 .gallery .image-container {
