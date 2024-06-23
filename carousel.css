@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Catamaran", sans-serif;
+    font-optical-sizing: auto;
 }
 
 body,
@@ -20,18 +22,16 @@ html {
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch; /* Permite rolagem suave em dispositivos iOS */
-    
 }
 
 .carousel-container {
     display: flex;
     width: 100%;
-    margin-top: 3%;
 }
 
 .carousel-slide {
     flex: none;
-    margin-right: 10px; /* Espaçamento entre os slides */
+    margin-right: 20px; /* Espaçamento entre os slides */
     scroll-snap-align: center;
 }
 

@@ -1,25 +1,27 @@
 .navbar ul {
     list-style: none;
     width: 100%;
-    
     justify-content: space-around;
     display: flex;
+    font-family: "Catamaran", sans-serif;
+    font-size: large;
+    font-weight: bold;
 }
 
 .navbar .carolina {
-    margin-top: 1.5%;
+    margin-top: 2%;
     margin-right: auto;
 }
 
 .navbar .work,
 .navbar .films,
 .navbar .contact {
-    margin-top: 1.5%;
+    margin-top: 2%;
     margin-left: auto;
 }
 
 .navbar .contact {
-    margin-top: 1.5%;
+    margin-top: 2%;
     margin-right: 2%;
 }
 
@@ -28,12 +30,11 @@
     height: 20%;
     align-items: center;
     display: flex;
-    margin: 0.7%;
 }
 
 header {
     width: 100%;
-    height: 8.3%;
+    height: 6%;
     inline-size: 1;
     position: fixed;
     top: 0;
@@ -45,11 +46,14 @@ header {
 .navbar a {
     color: rgb(0, 0, 0);
     text-decoration: none;
-    font-weight: bold;
     font-size: large;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-family: "Catamaran", sans-serif;
 }
 
+.navbar li {
+    margin: 0 15px;
+}
 
 .gallery {
     column-width: 30vw;
