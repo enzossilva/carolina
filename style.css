@@ -9,20 +9,15 @@
 }
 
 .navbar .carolina {
-    margin-top: 2%;
+    margin-top: 2.5%;
     margin-right: auto;
 }
 
 .navbar .work,
 .navbar .films,
 .navbar .contact {
-    margin-top: 2%;
+    margin-top: 2.6%;
     margin-left: auto;
-}
-
-.navbar .contact {
-    margin-top: 2%;
-    margin-right: 2%;
 }
 
 .navbar {
