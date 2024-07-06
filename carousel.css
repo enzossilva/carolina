@@ -2,13 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Catamaran", sans-serif;
-    font-optical-sizing: auto;
 }
 
 body,
 html {
-    height: 100%;
+    height: auto;
     overflow: hidden;
 }
 
@@ -18,7 +16,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2vh;
+    margin: 2% 1% 1% 1%;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch; /* Permite rolagem suave em dispositivos iOS */
@@ -44,8 +42,17 @@ html {
 
 /* Responsividade */
 @media screen and (max-width: 768px) {
+    .carousel {
+        height: 100vh; /* Ajuste a altura do carrossel para telas menores */
+    }
+
     .carousel-slide {
         margin-right: 5px; /* Ajuste de margem menor para telas menores */
+    }
+
+    .carousel-slide img {
+        width: 98%;
+        height: 85vh; /* Ajuste a altura da imagem para telas menores */
     }
 
     .navbar {

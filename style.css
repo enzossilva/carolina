@@ -1,3 +1,4 @@
+
 .navbar ul {
     list-style: none;
     width: 100%;
@@ -5,7 +6,6 @@
     display: flex;
     font-family: "Catamaran", sans-serif;
     font-size: large;
-    font-weight: bold;
 }
 
 .navbar .carolina {
@@ -52,9 +52,9 @@ header {
 
 .gallery {
     column-width: 30vw;
-    margin: 0 2% 2% 1.5%;
     column-gap: 10px;
     row-gap: 30px;
+    margin: 3.5% 1% 1% 1%;
 }
 
 .gallery .image-container {
@@ -99,7 +99,6 @@ main {
 }
 
 .contact-info p {
-    margin-top: 3%;
     font-size: 1.1em;
     color: #000000;
 }
@@ -117,7 +116,7 @@ main {
 .icon {
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 .icon a {
@@ -132,10 +131,69 @@ main {
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 4%;
+    margin-top: 2%;
     font-size: 0.9em;
     color: #aaa;
 }
+
+.container-video{
+    display: grid;
+    margin-top: 3%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-1 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2%;
+
+    .filme-1 {
+        margin: 4%;
+        margin-top: 4%;
+        margin-right: 28%;
+    }
+}
+.video-2 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2%;
+
+    .filme-2 {
+        margin: 4%;
+        margin-top: 4%;
+        margin-right: 28%;
+    }
+}
+.video-3 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2%;
+
+    .filme-3 {
+        margin: 4%;
+        margin-top: 4%;
+        margin-right: 28%;
+    }
+
+    
+}
+
+h2 {
+    font-family
+    :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 
 /* Responsive Design */
 
@@ -154,6 +212,13 @@ footer {
 @media (min-width: 992px) and (max-width: 1199px) {
     .gallery {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .gallery {
+        column-count: 2; 
+        column-width: 50%; 
     }
 }
 
