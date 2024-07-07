@@ -47,11 +47,12 @@ html {
 @media screen and (min-width: 769px) and (max-width: 1023px) {
     .carousel {
         height: 80vh;
-        margin-top: 5%;
+        
     }
 
     .carousel-slide {
         margin-right: 10px;
+        margin-top: 5%;
     }
 
     .carousel-slide img {
@@ -62,17 +63,21 @@ html {
     .navbar {
         margin-top: 3%;
     }
+
+    main {
+        margin-top: 9%;
+    }
 }
 
 /* (entre 481px e 768px) */
 @media screen and (min-width: 390px) and (max-width: 1022px) {
     .carousel {
         height: 80vh;
-        margin-top: 5%;
     }
 
     .carousel-slide {
         margin-right: 5px;
+        margin-top: 5%;
     }
 
     .carousel-slide img {
@@ -83,17 +88,20 @@ html {
     .navbar {
         margin-top: 3.5%;
     }
+    main {
+        margin-top: 9%;
+    }
 }
 
 /*  (480px e abaixo) */
 @media screen and (max-width: 480px) {
     .carousel {
         height: 80vh;
-        margin-top: 5%;
     }
 
     .carousel-slide {
         margin-right: 5px;
+        margin-top: 5%;
     }
 
     .carousel-slide img {
@@ -103,5 +111,8 @@ html {
 
     .navbar {
         margin-top: 4%;
+    }
+    main {
+        margin-top: 9%;
     }
 }
