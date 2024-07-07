@@ -55,7 +55,7 @@ html {
     }
 
     .carousel-slide img {
-        width: 96%;
+        width: auto;
         height: 80vh;
     }
 
@@ -76,7 +76,7 @@ html {
     }
 
     .carousel-slide img {
-        width: 98%;
+        width: auto;
         height: 80vh;
     }
 
@@ -97,7 +97,7 @@ html {
     }
 
     .carousel-slide img {
-        width: 100%;
+        width: auto;
         height: 80vh;
     }
 
