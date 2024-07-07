@@ -47,7 +47,6 @@ html {
 @media screen and (min-width: 769px) and (max-width: 1023px) {
     .carousel {
         height: 110vh;
-        margin-top: 7%;
     }
 
     .carousel-slide {
@@ -68,7 +67,6 @@ html {
 @media screen and (min-width: 390px) and (max-width: 1022px) {
     .carousel {
         height: 110vh;
-        margin-top: 7%;
     }
 
     .carousel-slide {
@@ -89,7 +87,6 @@ html {
 @media screen and (max-width: 480px) {
     .carousel {
         height: 110vh;
-        margin-top: 7%;
     }
 
     .carousel-slide {
