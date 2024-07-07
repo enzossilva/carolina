@@ -47,6 +47,7 @@ html {
 @media screen and (min-width: 769px) and (max-width: 1023px) {
     .carousel {
         height: 90vh;
+        margin-top: 7%;
     }
 
     .carousel-slide {
@@ -55,7 +56,7 @@ html {
 
     .carousel-slide img {
         width: 96%;
-        height: 100%;
+        height: 80vh;
     }
 
     .navbar {
@@ -66,7 +67,8 @@ html {
 /* (entre 481px e 768px) */
 @media screen and (min-width: 390px) and (max-width: 1022px) {
     .carousel {
-        height: 100vh;
+        height: 90vh;
+        margin-top: 7%;
     }
 
     .carousel-slide {
@@ -75,7 +77,7 @@ html {
 
     .carousel-slide img {
         width: 98%;
-        height: 100%;
+        height: 80vh;
     }
 
     .navbar {
@@ -86,7 +88,8 @@ html {
 /*  (480px e abaixo) */
 @media screen and (max-width: 480px) {
     .carousel {
-        height: 100vh;
+        height: 90vh;
+        margin-top: 7%;
     }
 
     .carousel-slide {
@@ -95,7 +98,7 @@ html {
 
     .carousel-slide img {
         width: 100%;
-        height: 100%;
+        height: 80vh;
     }
 
     .navbar {
