@@ -95,7 +95,7 @@ main {
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-    margin-top: 10%;
+    margin-top: 12%;
 }
 
 .contact-info p {
@@ -131,7 +131,7 @@ main {
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 2%;
+    margin-top: 1%;
     font-size: 0.9em;
     color: #aaa;
 }

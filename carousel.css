@@ -41,21 +41,64 @@ html {
 }
 
 /* Responsividade */
-@media screen and (max-width: 768px) {
+
+
+/* Responsividade para tablets e telas médias (entre 769px e 1023px) */
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .carousel {
-        height: 100vh; /* Ajuste a altura do carrossel para telas menores */
+        height: 90vh;
     }
 
     .carousel-slide {
-        margin-right: 5px; /* Ajuste de margem menor para telas menores */
+        margin-right: 10px;
+    }
+
+    .carousel-slide img {
+        width: 96%;
+        height: 60vh;
+    }
+
+    .navbar {
+        margin-top: 3%;
+    }
+}
+
+/* (entre 481px e 768px) */
+@media screen and (min-width: 390px) and (max-width: 1022px) {
+    .carousel {
+        height: 100vh;
+    }
+
+    .carousel-slide {
+        margin-right: 5px;
     }
 
     .carousel-slide img {
         width: 98%;
-        height: 85vh; /* Ajuste a altura da imagem para telas menores */
+        height: 60vh;
     }
 
     .navbar {
         margin-top: 3.5%;
+    }
+}
+
+/*  (480px e abaixo) */
+@media screen and (max-width: 480px) {
+    .carousel {
+        height: 100vh;
+    }
+
+    .carousel-slide {
+        margin-right: 5px;
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        height: 60vh;
+    }
+
+    .navbar {
+        margin-top: 4%;
     }
 }
