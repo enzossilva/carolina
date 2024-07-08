@@ -2,12 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel');
     const images = carousel.querySelectorAll('img');
 
-    // Função para garantir que o carrossel comece na primeira imagem
-    const ensureFirstImageVisible = () => {
-        // Ajusta a rolagem para o início do carrossel
-        carousel.scrollLeft = 0;
-    };
-
     const loadImage = (img) => {
         const src = img.getAttribute('data-src');
         if (src) {
@@ -43,10 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel.scrollLeft += event.deltaY * 7;
         }
     });
-
-    // Assegurar que a primeira imagem esteja visível após todas as imagens serem carregadas
-    window.addEventListener('load', ensureFirstImageVisible);
-
     // Assegurar que a primeira imagem esteja visível após uma mudança de tamanho da janela (útil para dispositivos móveis)
     window.addEventListener('resize', ensureFirstImageVisible);
 
