@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para garantir que o carrossel comece na primeira imagem
     const ensureFirstImageVisible = () => {
         // Ajusta a rolagem para o início do carrossel
-        carousel.scrollLeft = -1;
+        carousel.scrollLeft = 0;
     };
 
     const loadImage = (img) => {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Carregar a primeira imagem imediatamente
-    loadImage(images[-1]);
+    loadImage(images[0]);
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -52,4 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Assegurar que a primeira imagem esteja visível após um breve atraso (útil para renderizações lentas)
     setTimeout(ensureFirstImageVisible, 100);
+
+    // Usar MutationObserver para garantir que o carrossel seja redefinido após qualquer mudança no DOM
+    const mutationObserver = new MutationObserver(() => {
+        ensureFirstImageVisible();
+    });
+
+    mutationObserver.observe(carousel, { childList: true, subtree: true });
+
+    // Forçar a primeira imagem a ser visível repetidamente em intervalos para dispositivos móveis lentos
+    let forceScrollInterval = setInterval(ensureFirstImageVisible, 1000);
+    setTimeout(() => clearInterval(forceScrollInterval), 5000);  // Parar após 5 segundos
 });
