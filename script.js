@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    loadImage(images[1]);
+    loadImage(images[-1]);
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
