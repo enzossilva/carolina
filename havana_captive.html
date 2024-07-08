@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Havana Captive</title>
+    <title>CAPTIVE x HAVANA FESTA</title>
     <link rel="stylesheet" href="carousel.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -50,6 +50,16 @@
             <div class="carousel-slide">
                 <img loading="lazy" src="images/HAVANAECAPTIVE/9857.JPG" alt="Imagem 3">
             </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    if (window.location.hash) {
+                        var hash = window.location.hash.substring(1); // Remover o símbolo #
+                        if (hash) {
+                            window.location.href = hash + ".html";
+                        }
+                    }
+                });
+            </script>
         <script src="script.js" defer></script>
     </div>
 

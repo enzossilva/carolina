@@ -37,20 +37,4 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel.scrollLeft += event.deltaY * 7;
         }
     });
-    // Assegurar que a primeira imagem esteja visível após uma mudança de tamanho da janela (útil para dispositivos móveis)
-    window.addEventListener('resize', ensureFirstImageVisible);
-
-    // Assegurar que a primeira imagem esteja visível após um breve atraso (útil para renderizações lentas)
-    setTimeout(ensureFirstImageVisible, 100);
-
-    // Usar MutationObserver para garantir que o carrossel seja redefinido após qualquer mudança no DOM
-    const mutationObserver = new MutationObserver(() => {
-        ensureFirstImageVisible();
-    });
-
-    mutationObserver.observe(carousel, { childList: true, subtree: true });
-
-    // Forçar a primeira imagem a ser visível repetidamente em intervalos para dispositivos móveis lentos
-    let forceScrollInterval = setInterval(ensureFirstImageVisible, 1000);
-    setTimeout(() => clearInterval(forceScrollInterval), 5000);  // Parar após 5 segundos
 });

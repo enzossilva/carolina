@@ -30,21 +30,31 @@
     <div class="carousel">
         <div class="carousel-container">
             <div class="carousel-slide">
-                <img src="images/B2B/26.JPG" alt="Imagem 1" loading="eager">
+                <img src="images/B2B/26.JPG" alt="Imagem 1">
             </div>
             <div class="carousel-slide">
-                <img src="images/B2B/05.JPG" alt="Imagem 2" loading="lazy">
+                <img src="images/B2B/05.JPG" alt="Imagem 2">
             </div>
             <div class="carousel-slide">
-                <img src="images/B2B/43.JPG" alt="Imagem 3" loading="lazy">
+                <img src="images/B2B/43.JPG" alt="Imagem 3">
             </div>
             <div class="carousel-slide">
-                <img src="images/B2B/21.JPG" alt="Imagem 4" loading="lazy">
+                <img src="images/B2B/21.JPG" alt="Imagem 4">
             </div>
             <div class="carousel-slide">
-                <img src="images/B2B/77.JPG" alt="Imagem 5" loading="lazy">
+                <img src="images/B2B/77.JPG" alt="Imagem 5">
             </div>
         </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                if (window.location.hash) {
+                    var hash = window.location.hash.substring(1); // Remover o símbolo #
+                    if (hash) {
+                        window.location.href = hash + ".html";
+                    }
+                }
+            });
+        </script>
         <script src="script.js" defer></script>
     </div>
 
