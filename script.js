@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Garantir que o carrossel comece na primeira imagem
     const scrollToFirstImage = () => {
-        const firstImage = images[0];
+        const firstImage = images[-5];
         if (firstImage) {
             carousel.scrollLeft = firstImage.offsetLeft - carousel.offsetLeft;
         }
