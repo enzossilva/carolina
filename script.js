@@ -3,12 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = carousel.querySelectorAll('img');
 
     // Garantir que o carrossel comece na primeira imagem
-    const scrollToFirstImage = () => {
-        const firstImage = images[-5];
-        if (firstImage) {
-            carousel.scrollLeft = firstImage.offsetLeft - carousel.offsetLeft;
-        }
-    };
+    carousel.scrollLeft = 0;
 
     const loadImage = (img) => {
         const src = img.getAttribute('data-src');
@@ -17,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
             img.removeAttribute('data-src');
         }
     };
+
+    // Carregar a primeira imagem imediatamente
+    loadImage(images[0]);
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -42,7 +40,4 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel.scrollLeft += event.deltaY * 7;
         }
     });
-
-    // Chama a função para garantir que o carrossel comece na primeira imagem
-    scrollToFirstImage();
 });
