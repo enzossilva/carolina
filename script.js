@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para garantir que o carrossel comece na primeira imagem
     const ensureFirstImageVisible = () => {
         // Ajusta a rolagem para o início do carrossel
-        carousel.scrollLeft = 0;
+        carousel.scrollLeft = -1;
     };
 
     const loadImage = (img) => {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Carregar a primeira imagem imediatamente
-    loadImage(images[0]);
+    loadImage(images[-1]);
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
