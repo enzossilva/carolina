@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel');
     const images = carousel.querySelectorAll('img');
 
-
+    carousel.scrollLeft = 0;
     const loadImage = (img) => {
         const src = img.getAttribute('data-src');
         if (src) {
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    loadImage(images[-1]);
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
