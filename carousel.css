@@ -46,7 +46,7 @@ html {
 /* Responsividade para tablets e telas médias (entre 769px e 1023px) */
 @media screen and (min-width: 769px) and (max-width: 1023px) {
     .carousel {
-        height: 120vh;
+        height: 80vh;
         
     }
 
@@ -72,7 +72,7 @@ html {
 /* (entre 481px e 768px) */
 @media screen and (min-width: 390px) and (max-width: 1022px) {
     .carousel {
-        height: 120vh;
+        height: 80vh;
     }
 
     .carousel-slide {
@@ -96,7 +96,7 @@ html {
 /*  (480px e abaixo) */
 @media screen and (max-width: 480px) {
     .carousel {
-        height: 120vh;
+        height: 80vh;
     }
 
     .carousel-slide {
