@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel');
     const images = carousel.querySelectorAll('img');
 
+    carousel.scrollLeft = 0;
+
     const loadImage = (img) => {
         const src = img.getAttribute('data-src');
         if (src) {
@@ -37,4 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel.scrollLeft += event.deltaY * 7;
         }
     });
+    // Forçar o scroll para a primeira imagem após um pequeno atraso
+    setTimeout(() => {
+        carousel.scrollLeft = 0;
+    }, 100);
 });
