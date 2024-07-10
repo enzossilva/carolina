@@ -304,6 +304,10 @@ h2 {
         margin: 2%;
     }
     .icon {
-        margin-top: 30%;
+        margin-top: 20%;
+        
+    }
+    .icon a {
+        margin: 5%;
     }
 }
