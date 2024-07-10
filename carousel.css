@@ -50,7 +50,7 @@ html {
 
     .carousel-slide {
         margin-right: 70px;
-        margin-top: 25%;
+        margin-top: 35%;
     }
 
     .carousel-slide img {
@@ -94,16 +94,12 @@ html {
         margin-left: -24vh !important;
     }
     
-
-    .navbar {
-        margin-top: 1%;
-    }
     main {
         margin-top: 25%;
     }
     
     header {
-        margin-top: 8%;
+        margin-top: 12%;
     }
 }
 
@@ -115,7 +111,7 @@ html {
 
     .carousel-slide {
         margin-right: 70px;
-        margin-top: 25%;
+        margin-top: 35%;
     }
 
     .carousel-slide img {
@@ -159,16 +155,12 @@ html {
         margin-left: -24vh !important;
     }
     
-
-    .navbar {
-        margin-top: 1%;
-    }
     main {
         margin-top: 25%;
     }
     
     header {
-        margin-top: 8%;
+        margin-top: 12%;
     }
 }
 
@@ -180,7 +172,7 @@ html {
 
     .carousel-slide {
         margin-right: 70px;
-        margin-top: 25%;
+        margin-top: 35%;
     }
 
     .carousel-slide img {
@@ -225,14 +217,11 @@ html {
     }
     
 
-    .navbar {
-        margin-top: 1%;
-    }
     main {
         margin-top: 25%;
     }
     
     header {
-        margin-top: 8%;
+        margin-top: 12%;
     }
 }
