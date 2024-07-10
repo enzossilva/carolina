@@ -46,68 +46,11 @@ html {
 @media screen and (min-width: 769px) and (max-width: 1023px) {
     .carousel {
         height: auto;
-        
     }
 
     .carousel-slide {
         margin-right: 70px;
-        margin-top: 10%;
-    }
-
-    .carousel-slide img {
-        width: auto;
-        height: 70vh;
-    }
-    
-    .special{
-        transform: scale(0.48);
-        margin-right: -22vh;
-        margin-left: -22vh;
-    }
-
-    main {
         margin-top: 25%;
-    }
-}
-
-/* (entre 481px e 768px) */
-@media screen and (min-width: 390px) and (max-width: 1022px) {
-    .carousel {
-        height: auto;
-    }
-
-    .carousel-slide {
-        margin-right: 70px;
-        margin-top: 10%;
-    }
-
-    .carousel-slide img {
-        width: auto;
-        height: 70vh;
-    }
-    .special{
-        transform: scale(0.48);
-        margin-right: -22vh !important;
-        margin-left: -22vh !important;
-    }
-
-    .navbar {
-        margin-top: 3.5%;
-    }
-    main {
-        margin-top: 25%;
-    }
-}
-
-/*  (480px e abaixo) */
-@media screen and (max-width: 480px) {
-    .carousel {
-        height: auto;
-    }
-
-    .carousel-slide {
-        margin-right: 70px;
-        margin-top: 10%;
     }
 
     .carousel-slide img {
@@ -153,9 +96,143 @@ html {
     
 
     .navbar {
-        margin-top: 4%;
+        margin-top: 1%;
     }
     main {
         margin-top: 25%;
+    }
+    
+    header {
+        margin-top: 8%;
+    }
+}
+
+/* (entre 481px e 768px) */
+@media screen and (min-width: 390px) and (max-width: 1022px) {
+    .carousel {
+        height: auto;
+    }
+
+    .carousel-slide {
+        margin-right: 70px;
+        margin-top: 25%;
+    }
+
+    .carousel-slide img {
+        width: auto;
+        height: 70vh;
+    }
+    .special{
+        transform: scale(0.48);
+        margin-right: -26vh !important;
+        margin-left: -26vh !important;
+    }
+    .special1{
+        transform: scale(0.48);
+        margin-right: -29vh !important;
+        margin-left: -26vh !important;
+    }
+    .special2{
+        transform: scale(0.58);
+        margin-right: -32vh !important;
+        margin-left: -30vh !important;
+    }
+    
+    .special3{
+        transform: scale(0.40);
+        margin-right: -35vh !important;
+        margin-left: -36vh !important;
+    }
+    .special5{
+        transform: scale(0.40);
+        margin-right: -30vh !important;
+        margin-left: -32vh !important;
+    }
+    .special4{
+        transform: scale(0.48);
+        margin-right: -22vh !important;
+        margin-left: -22vh !important;
+    }
+    .special6{
+        transform: scale(0.48);
+        margin-right: -24vh !important;
+        margin-left: -24vh !important;
+    }
+    
+
+    .navbar {
+        margin-top: 1%;
+    }
+    main {
+        margin-top: 25%;
+    }
+    
+    header {
+        margin-top: 8%;
+    }
+}
+
+/*  (480px e abaixo) */
+@media screen and (max-width: 480px) {
+    .carousel {
+        height: auto;
+    }
+
+    .carousel-slide {
+        margin-right: 70px;
+        margin-top: 25%;
+    }
+
+    .carousel-slide img {
+        width: auto;
+        height: 70vh;
+    }
+    .special{
+        transform: scale(0.48);
+        margin-right: -26vh !important;
+        margin-left: -26vh !important;
+    }
+    .special1{
+        transform: scale(0.48);
+        margin-right: -29vh !important;
+        margin-left: -26vh !important;
+    }
+    .special2{
+        transform: scale(0.58);
+        margin-right: -32vh !important;
+        margin-left: -30vh !important;
+    }
+    
+    .special3{
+        transform: scale(0.40);
+        margin-right: -35vh !important;
+        margin-left: -36vh !important;
+    }
+    .special5{
+        transform: scale(0.40);
+        margin-right: -30vh !important;
+        margin-left: -32vh !important;
+    }
+    .special4{
+        transform: scale(0.48);
+        margin-right: -22vh !important;
+        margin-left: -22vh !important;
+    }
+    .special6{
+        transform: scale(0.48);
+        margin-right: -24vh !important;
+        margin-left: -24vh !important;
+    }
+    
+
+    .navbar {
+        margin-top: 1%;
+    }
+    main {
+        margin-top: 25%;
+    }
+    
+    header {
+        margin-top: 8%;
     }
 }
