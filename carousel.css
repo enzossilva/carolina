@@ -29,7 +29,7 @@ html {
 
 .carousel-slide {
     flex: none;
-    margin-right: 20px; /* Espaçamento entre os slides */
+    margin-right: 50px; /* Espaçamento entre os slides */
     scroll-snap-align: center;
 }
 
