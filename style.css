@@ -222,6 +222,7 @@ h2 {
     }
     .gallery {
         grid-template-columns: repeat(3, 1fr);
+        margin-top: 3%;
     }
     main {
         margin-top: 20%;
@@ -241,6 +242,7 @@ h2 {
     .gallery {
         column-count: 2; 
         column-width: 50%; 
+        margin-top: 17%;
     }
     main {
         margin-top: 20%;
@@ -259,6 +261,7 @@ h2 {
     }
     .gallery {
         grid-template-columns: repeat(2, 1fr);
+        margin-top: 5%;
     }
     main {
         margin-top: 20%;
@@ -273,9 +276,8 @@ h2 {
 }
 
 @media screen and  (max-width: 768px) {
-    
-    .navbar {
-        margin-top: 3.5%;
+    header {
+        height: 9vh;
     }
     * {
         column-width: 100%;
@@ -289,6 +291,9 @@ h2 {
     }
     .icon {
         margin-top: 20%;
+    }
+    .navbar{
+        margin-top: 7%;
     }
 }
 
@@ -309,5 +314,9 @@ h2 {
     }
     .icon a {
         margin: 5%;
+    }
+
+    .navbar{
+        margin-top: 8%;
     }
 }
