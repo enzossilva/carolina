@@ -46,7 +46,6 @@ html {
 @media screen and (min-width: 769px) and (max-width: 1023px) {
     .carousel {
         height: auto;
-        margin: 2% 1% 1% 1%;
     }
 
     .carousel-slide {
@@ -108,13 +107,12 @@ html {
 @media screen and (min-width: 390px) and (max-width: 1022px) {
     .carousel {
         height: auto;
-        margin: 2% 1% 1% 1%;
+        margin-left: 0.3vh;
     }
 
     .carousel-slide {
-        margin-left: 5vh;
+        margin-left: 1vh;
         margin-top: 20%;
-        margin: 2% 1% 1% 1%;
     }
 
     .carousel-slide img {
@@ -168,7 +166,6 @@ html {
     .carousel {
         height: auto;
         width: 96%;
-        margin-left: 2%;
     }
 
     .carousel-container{
