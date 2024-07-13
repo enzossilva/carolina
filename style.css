@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    margin-right: 0.3%;
 }
+
 .navbar ul {
     list-style: none;
     width: 100%;
@@ -55,6 +55,8 @@ header {
     margin: 0 15px;
 }
 
+
+
 .gallery {
     column-width: 30vw;
     column-gap: 10px;
@@ -96,14 +98,11 @@ header {
 }
 
 main {
-    max-width: 800px;
+    width: 800px;
+    height: 98%;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-}
-
-section {
-    margin-top: 8%;
 }
 
 .contact-info p {
@@ -144,28 +143,26 @@ footer {
     margin-top: 3%;
     width: 100%;
     align-items: center;
-    justify-content: center;
 }
 
 .video-1 {
-    width: 100%;
+    width: 98%;
     height: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content:start;
     align-items: center;
     margin: 2%;
     
 
     .filme-1 {
-        margin: 4%;
         margin-top: 4%;
     }
 }
 .video-2 {
-    width: 100%;
+    width: 98%;
     height: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content:center;
     align-items: center;
     margin: 2%;
 
@@ -175,10 +172,10 @@ footer {
     }
 }
 .video-3 {
-    width: 100%;
+    width: 98%;
     height: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content:end;
     align-items: center;
     margin: 2%;
 
@@ -213,6 +210,31 @@ h2 {
     main {
         margin-top: 4%;
     }
+
+    .video-1{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-2{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-3{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
 }
 
 @media screen and  (min-width: 992px) and (max-width: 1199px) {
@@ -223,6 +245,30 @@ h2 {
     .gallery {
         grid-template-columns: repeat(3, 1fr);
         margin-top: 3%;
+    }
+    .video-1{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-2{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-3{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
     }
     main {
         margin-top: 20%;
@@ -253,6 +299,30 @@ h2 {
     .icon {
         margin-top: 15%;
     }
+    .video-1{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-2{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-3{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%; 
+    }
 }
 
 @media screen and  (min-width: 768px) and (max-width: 991px) {
@@ -272,6 +342,30 @@ h2 {
     }
     .icon {
         margin-top: 15%;
+    }
+    .video-1{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-2{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-3{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
     }
 }
 
@@ -294,6 +388,30 @@ h2 {
     }
     .navbar{
         margin-top: 7%;
+    }
+    .video-1{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-2{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-3{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%; 
     }
 }
 
@@ -318,5 +436,29 @@ h2 {
 
     .navbar{
         margin-top: 8%;
+    }
+    .video-1{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-2{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
+    }
+    .video-3{
+        width: 98%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 2%;
     }
 }

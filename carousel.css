@@ -46,6 +46,7 @@ html {
 @media screen and (min-width: 769px) and (max-width: 1023px) {
     .carousel {
         height: auto;
+        margin: 2% 1% 1% 1%;
     }
 
     .carousel-slide {
@@ -107,11 +108,13 @@ html {
 @media screen and (min-width: 390px) and (max-width: 1022px) {
     .carousel {
         height: auto;
+        margin: 2% 1% 1% 1%;
     }
 
     .carousel-slide {
-        margin-right: 70px;
+        margin-left: 5vh;
         margin-top: 20%;
+        margin: 2% 1% 1% 1%;
     }
 
     .carousel-slide img {
@@ -164,11 +167,11 @@ html {
 @media screen and (max-width: 480px) {
     .carousel {
         height: auto;
+        width: 96%;
+        margin-left: 2%;
     }
 
-    .carousel-slide {
-        margin-right: 70px;
-        margin-top: 20%;
+    .carousel-container{
     }
 
     .carousel-slide img {
@@ -203,7 +206,7 @@ html {
     .special1-1-5{
         transform: scale(0.43);
         margin-right: -30vh !important;
-        margin-left: -29vh !important;
+        margin-left: -27vh !important;
     }
     .special1-1-6{
         transform: scale(0.43);
@@ -233,8 +236,8 @@ html {
 
     .special1-1-11{
         transform: scale(0.43);
-        margin-right: -29vh !important;
-        margin-left: -29vh !important;
+        margin-right: -28.6vh !important;
+        margin-left: -28.6vh !important;
     }
     .special1-1-12{
         transform: scale(0.5);
@@ -247,23 +250,23 @@ html {
         margin-left: -21.1vh !important;
     }
     .special1-1-13{
-        transform: scale(0.43);
-        margin-right: -26.1vh !important;
-        margin-left: -27vh !important;
+        transform: scale(0.48);
+        margin-right: -21.4vh !important;
+        margin-left: -24.5vh !important;
     }
     .special1-1-14{
-        transform: scale(0.43);
-        margin-right: -27vh !important;
-        margin-left: -26.8vh !important;
+        transform: scale(0.48);
+        margin-right: -21.5vh !important;
+        margin-left: -24vh !important;
     }
     .special1-1-15{
         transform: scale(0.45);
-        margin-right: -27vh !important;
+        margin-right: -26vh !important;
         margin-left: -28vh !important;
     }
     .special1-1-16{
         transform: scale(0.49);
-        margin-right: -30vh !important;
+        margin-right: -29vh !important;
         margin-left: -29vh !important;
     }
     .special1-1-17{
@@ -273,32 +276,32 @@ html {
     }
     .special1-1-18{
         transform: scale(0.49);
-        margin-right: -27vh !important;
+        margin-right: -26vh !important;
         margin-left: -23vh !important;
     }
     .special1-1-19{
         transform: scale(0.49);
-        margin-right: -25vh !important;
-        margin-left: -25vh !important;
+        margin-right: -24vh !important;
+        margin-left: -24vh !important;
     }
     .special1-1-20{
         transform: scale(0.49);
-        margin-right: -23.6vh !important;
-        margin-left: -23.6vh !important;
+        margin-right: -21.6vh !important;
+        margin-left: -21.6vh !important;
     }
     .special1-1-21{
         transform: scale(0.43);
-        margin-right: -28vh !important;
+        margin-right: -27.5vh !important;
         margin-left: -30vh !important;
     }
     .special1-1-22{
         transform: scale(0.43);
-        margin-right: -25vh !important;
-        margin-left: -27vh !important;
+        margin-right: -23vh !important;
+        margin-left: -25.5vh !important;
     }
     .special1-1-23{
         transform: scale(0.43);
-        margin-right: -29vh !important;
+        margin-right: -27.5vh !important;
         margin-left: -33vh !important;
     }
     .special1-1-24{
@@ -339,13 +342,13 @@ html {
     }
     .special1-1-31{
         transform: scale(0.44);
-        margin-right: -28.8vh !important;
-        margin-left: -29.5vh !important;
+        margin-right: -27.8vh !important;
+        margin-left: -31vh !important;
     }
     .special1-1-32{
         transform: scale(0.43);
         margin-right: -40vh !important;
-        margin-left: -28.1vh !important;
+        margin-left: -27.3vh !important;
     }
 
     .special1-1-33{
@@ -514,6 +517,43 @@ html {
         margin-right: -24vh !important;
         margin-left: -24vh !important;
     }
+    .special1-1-66{
+        transform: scale(0.48);
+        margin-right: -24vh !important;
+        margin-left: -24vh !important;
+    }
+    .special1-1-67{
+        transform: scale(0.48);
+        margin-right: -21.3vh !important;
+        margin-left: -21.3vh !important;
+    }
+    .special1-1-68{
+        transform: scale(0.43);
+        margin-right: -28vh !important;
+        margin-left: -30vh !important;
+    }
+    .special1-1-69{
+        transform: scale(0.43);
+        margin-right: -31vh !important;
+        margin-left: -32vh !important;
+    }
+    .special1-1-70{
+        transform: scale(0.43);
+        margin-right: -27vh !important;
+        margin-left: -26.5vh !important;
+    }
+    .special1-1-71{
+        transform: scale(0.43);
+        margin-right: -38vh !important;
+        margin-left: -33.5vh !important;
+    }
+    .special1-1-72{
+        transform: scale(0.43);
+        margin-right: -28.3vh !important;
+        margin-left: -28.5vh !important;
+    }
+    
+    
 
 
 
