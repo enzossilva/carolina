@@ -296,6 +296,9 @@ h2 {
     h2 {
         font-size: small;
     }
+    section {
+        width: 50%;
+    }
     .icon {
         margin-top: 15%;
     }
@@ -339,6 +342,9 @@ h2 {
     h2 {
         font-size: small;
         margin: 1%;
+    }
+    section {
+        width: 50%;
     }
     .icon {
         margin-top: 15%;
