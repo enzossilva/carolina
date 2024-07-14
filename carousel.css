@@ -168,9 +168,6 @@ html {
         width: 96%;
     }
 
-    .carousel-container{
-    }
-
     .carousel-slide img {
         width: auto;
         height: 70vh;
@@ -551,11 +548,6 @@ html {
     }
     
     
-
-
-
-    
-
     .special1-2{
         transform: scale(0.48);
         margin-right: -24vh !important;
@@ -636,7 +628,4 @@ html {
     }
     
 
-    main {
-        margin-top: 25%;
-    }
 }
