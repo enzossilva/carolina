@@ -1,55 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FILMES</title>
+    <meta name="description" content="Filmes de Carolina Cristine.">
+    <meta property="og:title" content="Films — Carolina Cristine">
+    <meta property="og:description" content="Filmes de Carolina Cristine.">
+    <meta property="og:image" content="https://carolinacristine.com.br/images/RIZOMA/8548.JPG">
+    <meta property="og:url" content="https://carolinacristine.com.br/filmes.html">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://carolinacristine.com.br/filmes.html">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <title>Films — Carolina Cristine</title>
     <link rel="stylesheet" href="style.css">
 </head>
-    <header>
-        <nav class="navbar">
-            <ul>
-                <li class="carolina">
-                    <a href="index.html">CAROLINA</a>
-                </li>
-                <li class="work">
-                    <a href="work.html">WORK</a>
-                </li>
-                <li class="films">
-                    <a href="filmes.html">FILMS</a>
-                </li>
-                <li class="contact">
-                    <a href="contact.html">CONTACT</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-<body style="margin-top: 5%;">
-    <div class="container-video">
-        <div class="video-2">
-            <h2 style="margin-right: 5%;">.rizoma</h2>
-            <video class="filme-2" src="videos/rizoma.mp4" type="video/mp4"
-            controls
-            width="250">
-            </video>
+<body data-page="films">
+    <script src="nav.js"></script>
+    <main class="films-page">
+        <div class="films-grid">
+            <article class="film">
+                <h2>Rizoma</h2>
+                <video src="videos/rizoma.mp4" controls playsinline preload="metadata"></video>
+            </article>
+            <article class="film">
+                <h2>Mar Salgado</h2>
+                <video src="videos/mar_salgado.mp4" controls playsinline preload="metadata"></video>
+            </article>
+            <article class="film">
+                <h2>Zziper</h2>
+                <video src="videos/zipper.mp4" controls playsinline preload="metadata"></video>
+            </article>
         </div>
-        <div class="video-2">
-            <video class="filme-3" src="videos/mar_salgado.mp4" type="video/mp4"
-            controls
-            width="250">
-            </video>
-            <h2 style="margin-left: 5%;">.mar<br>salgado</h2>
-        </div>
-    </div>
-    <div class="container-video1">
-        <div class="video-1">
-            <h2 style="margin-right: 5%;">.zziper</h2>
-            <video class="filme-1" src="videos/zipper.mp4"
-            type="video/mp4"
-            controls
-            width="250">
-            </video>
-        </div>
-    </div>
+    </main>
 </body>
 </html>
