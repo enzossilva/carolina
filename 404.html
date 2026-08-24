@@ -15,14 +15,6 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body data-page="home">
-    <script>
-        (function () {
-            var path = location.pathname;
-            if (/\.html$/i.test(path) && path !== "/index.html" && path !== "/404.html") {
-                location.replace(path.replace(/\.html$/i, "") || "/");
-            }
-        })();
-    </script>
     <script src="/nav.js"></script>
     <main class="contact-page">
         <div class="contact-info">

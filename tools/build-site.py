@@ -384,14 +384,6 @@ def render_contact() -> str:
 def render_404() -> str:
     return f"""{head("Página não encontrada — Carolina Cristine", SITE_DESCRIPTION, "", "404")}</head>
 <body data-page="home">
-    <script>
-        (function () {{
-            var path = location.pathname;
-            if (/\\.html$/i.test(path) && path !== "/index.html" && path !== "/404.html") {{
-                location.replace(path.replace(/\\.html$/i, "") || "/");
-            }}
-        }})();
-    </script>
     <script src="/nav.js"></script>
     <main class="contact-page">
         <div class="contact-info">
