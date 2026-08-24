@@ -384,6 +384,14 @@ def render_contact() -> str:
 def render_404() -> str:
     return f"""{head("Página não encontrada — Carolina Cristine", SITE_DESCRIPTION, "", "404")}</head>
 <body data-page="home">
+    <script>
+        (function () {{
+            var path = location.pathname;
+            if (/\\.html$/i.test(path) && path !== "/index.html" && path !== "/404.html") {{
+                location.replace(path.replace(/\\.html$/i, "") || "/");
+            }}
+        }})();
+    </script>
     <script src="/nav.js"></script>
     <main class="contact-page">
         <div class="contact-info">
@@ -472,18 +480,22 @@ def main() -> None:
     if empty:
         raise SystemExit(f"essays without images: {empty}")
 
+    keep_root = {"index.html", "404.html"}
     for essay in essays.values():
         name = slug(essay["file"])
         write_pretty(name, render_essay(essay))
-        write(ROOT / essay["file"], render_redirect(name))
+        stale = ROOT / essay["file"]
+        if stale.exists():
+            stale.unlink()
 
     write(ROOT / "index.html", render_index(essays, featured))
     write_pretty("work", render_work(essays, work))
     write_pretty("filmes", render_films(films))
     write_pretty("contact", render_contact())
-    write(ROOT / "work.html", render_redirect("work"))
-    write(ROOT / "filmes.html", render_redirect("filmes"))
-    write(ROOT / "contact.html", render_redirect("contact"))
+    for leftover in ("work.html", "filmes.html", "contact.html"):
+        stale = ROOT / leftover
+        if stale.exists():
+            stale.unlink()
     write(ROOT / "404.html", render_404())
     write(ROOT / "sitemap.xml", render_sitemap(essays))
     write(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
