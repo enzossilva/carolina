@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 from collections import OrderedDict
 from html import escape
 from pathlib import Path
@@ -158,7 +159,8 @@ FILMS = [
 ]
 
 SKIP_PAGES = {"index.html", "work.html", "filmes.html", "contact.html", "404.html"}
-RESERVED_DIRS = {"images", "videos", "data", "tools", "css"}
+RESERVED_DIRS = {"images", "videos", "data", "tools", "css", "admin", "worker"}
+KEEP_PAGE_DIRS = {"work", "filmes", "contact"}
 
 
 def slug(filename: str) -> str:
@@ -282,7 +284,14 @@ def render_index(essays: OrderedDict[str, dict], featured: list[str]) -> str:
             f"                </a>\n"
             f"            </div>"
         )
-    return f"""{head("Carolina Cristine", SITE_DESCRIPTION, essays["rizoma.html"]["cover"], "")}    <link rel="stylesheet" href="/carousel.css">
+    og_cover = ""
+    if "rizoma.html" in essays:
+        og_cover = essays["rizoma.html"]["cover"]
+    elif featured:
+        og_cover = essays[featured[0]]["cover"]
+    elif essays:
+        og_cover = next(iter(essays.values()))["cover"]
+    return f"""{head("Carolina Cristine", SITE_DESCRIPTION, og_cover, "")}    <link rel="stylesheet" href="/carousel.css">
 </head>
 <body data-page="home">
     <script src="/nav.js"></script>
@@ -309,7 +318,8 @@ def render_work(essays: OrderedDict[str, dict], work: list[str]) -> str:
             f"            </div>\n"
             f"        </a>"
         )
-    return f"""{head("Work — Carolina Cristine", "Ensaios e trabalhos de Carolina Cristine.", essays[work[0]]["cover"], "work")}</head>
+    og_cover = essays[work[0]]["cover"] if work else (next(iter(essays.values()))["cover"] if essays else "")
+    return f"""{head("Work — Carolina Cristine", "Ensaios e trabalhos de Carolina Cristine.", og_cover, "work")}</head>
 <body data-page="work">
     <script src="/nav.js"></script>
     <div class="gallery">
@@ -475,6 +485,8 @@ def main() -> None:
     keep_root = {"index.html", "404.html"}
     for essay in essays.values():
         name = slug(essay["file"])
+        if name in RESERVED_DIRS or name in KEEP_PAGE_DIRS:
+            raise SystemExit(f"essay slug collides with a site page: {name}")
         write_pretty(name, render_essay(essay))
         stale = ROOT / essay["file"]
         if stale.exists():
@@ -490,7 +502,19 @@ def main() -> None:
             stale.unlink()
     write(ROOT / "404.html", render_404())
     write(ROOT / "sitemap.xml", render_sitemap(essays))
-    write(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
+    essay_dirs = {slug(essay["file"]) for essay in essays.values()}
+    for dest in ROOT.iterdir():
+        if not dest.is_dir() or dest.name.startswith("."):
+            continue
+        if dest.name in RESERVED_DIRS or dest.name in KEEP_PAGE_DIRS or dest.name in essay_dirs:
+            continue
+        if (dest / "index.html").exists():
+            shutil.rmtree(dest)
+
+    write(
+        ROOT / "robots.txt",
+        f"User-agent: *\nAllow: /\nDisallow: /admin\nSitemap: {SITE_URL}/sitemap.xml\n",
+    )
     print(f"built {len(essays)} essays")
 
 

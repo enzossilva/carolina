@@ -1,2 +1,6 @@
 images/_originals/
 .tmp-screens/
+worker/node_modules/
+worker/.wrangler/
+tools/__pycache__/
+

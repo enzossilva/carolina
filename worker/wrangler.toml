@@ -1,0 +1,16 @@
+name = "carolina-admin"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+
+# Deploy:
+#   cd worker
+#   npx wrangler login
+#   npx wrangler secret put ADMIN_PASSWORD
+#   npx wrangler secret put GITHUB_TOKEN
+#   npx wrangler deploy
+# Then paste the Worker URL into /admin/config.js
+
+[vars]
+GITHUB_REPO = "enzossilva/carolina"
+GITHUB_BRANCH = "main"
+ALLOWED_ORIGINS = "https://carolinacristine.com.br,https://www.carolinacristine.com.br,http://127.0.0.1:4173,http://localhost:4173,http://127.0.0.1:5500,http://127.0.0.1:8000,http://localhost:8000"

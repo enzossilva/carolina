@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin — Carolina Cristine</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+    <header class="admin-header">
+        <a href="/" class="admin-brand">CAROLINA</a>
+        <span class="admin-label">admin</span>
+        <button type="button" class="admin-text-btn" id="logout" hidden>Sair</button>
+    </header>
+
+    <main class="admin-main">
+        <section id="login-view" class="admin-card">
+            <h1>Entrar</h1>
+            <form id="login-form">
+                <label for="password">Senha</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <p class="admin-error" id="login-error" hidden></p>
+        </section>
+
+        <section id="list-view" hidden>
+            <div class="admin-toolbar">
+                <h1>Ensaios</h1>
+                <button type="button" id="new-essay">Novo ensaio</button>
+            </div>
+            <div id="essay-list" class="essay-list"></div>
+        </section>
+
+        <section id="edit-view" class="admin-card" hidden>
+            <button type="button" class="admin-text-btn" id="back-list">Voltar</button>
+            <h1 id="edit-title">Ensaio</h1>
+            <label for="essay-name">Título</label>
+            <input id="essay-name" type="text" maxlength="120">
+            <div class="admin-checks">
+                <label><input type="checkbox" id="on-home"> Mostrar na home</label>
+                <label><input type="checkbox" id="on-work"> Mostrar no WORK</label>
+            </div>
+            <label class="file-btn">
+                Adicionar fotos
+                <input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+            </label>
+            <div id="photo-grid" class="photo-grid"></div>
+            <p class="admin-status" id="edit-status" hidden></p>
+            <p class="admin-error" id="edit-error" hidden></p>
+            <div class="admin-actions">
+                <button type="button" id="save-essay">Salvar e publicar</button>
+                <button type="button" class="danger" id="delete-essay">Excluir ensaio</button>
+            </div>
+        </section>
+    </main>
+    <script src="/admin/config.js"></script>
+    <script src="/admin/admin.js"></script>
+</body>
+</html>
