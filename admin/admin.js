@@ -1,4 +1,4 @@
-(function () {
++-(function () {
     const TOKEN_KEY = "carolina-admin-token";
     const MAX_SIDE = 2800;
     const JPEG_QUALITY = 0.9;
@@ -8,6 +8,7 @@
     const listView = document.getElementById("list-view");
     const editView = document.getElementById("edit-view");
     const logoutBtn = document.getElementById("logout");
+    const logoutWrap = document.getElementById("logout-wrap");
     const loginForm = document.getElementById("login-form");
     const loginError = document.getElementById("login-error");
     const essayList = document.getElementById("essay-list");
@@ -44,17 +45,11 @@
     }
 
     function show(el, on) {
-        el.hidden = !on;
+        el.classList.toggle("is-on", Boolean(on));
     }
 
     function setText(el, message) {
-        if (!message) {
-            el.hidden = true;
-            el.textContent = "";
-            return;
-        }
-        el.hidden = false;
-        el.textContent = message;
+        el.textContent = message || "";
     }
 
     async function api(path, options) {
@@ -126,7 +121,7 @@
     function showApp() {
         const in_ = Boolean(token());
         show(loginView, !in_);
-        show(logoutBtn, in_);
+        show(logoutWrap, in_);
         if (!in_) {
             show(listView, false);
             show(editView, false);
@@ -144,16 +139,16 @@
     function renderList() {
         essayList.innerHTML = "";
         (site.essays || []).forEach((essay, index) => {
-            const row = document.createElement("button");
-            row.type = "button";
-            row.className = "essay-row";
+            const card = document.createElement("button");
+            card.type = "button";
+            card.className = "essay-card";
+            const wrap = document.createElement("div");
+            wrap.className = "image-container";
             const img = document.createElement("img");
             img.src = "/" + String(essay.cover || "").replace(/^\//, "");
-            img.alt = "";
-            const text = document.createElement("div");
-            const title = document.createElement("span");
-            title.textContent = essay.title;
-            const meta = document.createElement("small");
+            img.alt = essay.title || "";
+            const overlay = document.createElement("div");
+            overlay.className = "overlay";
             const flags = [];
             if ((site.featured || []).includes(essay.file)) {
                 flags.push("home");
@@ -161,11 +156,13 @@
             if ((site.work || []).includes(essay.file)) {
                 flags.push("WORK");
             }
-            meta.textContent = flags.length ? flags.join(" · ") : "fora da home e do WORK";
-            text.append(title, meta);
-            row.append(img, text);
-            row.addEventListener("click", () => openEdit(index));
-            essayList.appendChild(row);
+            overlay.textContent = flags.length
+                ? essay.title + " · " + flags.join(" · ")
+                : essay.title;
+            wrap.append(img, overlay);
+            card.appendChild(wrap);
+            card.addEventListener("click", () => openEdit(index));
+            essayList.appendChild(card);
         });
     }
 
@@ -192,7 +189,7 @@
         onHome.checked = Boolean(editing.file) && (site.featured || []).includes(editing.file);
         onWork.checked = Boolean(editing.file) && (site.work || []).includes(editing.file);
         editHeading.textContent = editing.isNew ? "Novo ensaio" : editing.title;
-        deleteBtn.hidden = Boolean(editing.isNew);
+        show(deleteBtn, !editing.isNew);
         setText(editStatus, "");
         setText(editError, "");
         renderPhotos();
