@@ -17,7 +17,7 @@
     </header>
 
     <main class="admin-main">
-        <section id="login-view" class="admin-card">
+        <section id="login-view" class="admin-card admin-login">
             <h1>Entrar</h1>
             <form id="login-form">
                 <label for="password">Senha</label>
@@ -36,8 +36,10 @@
         </section>
 
         <section id="edit-view" class="admin-card" hidden>
-            <button type="button" class="admin-text-btn" id="back-list">Voltar</button>
-            <h1 id="edit-title">Ensaio</h1>
+            <div class="edit-top">
+                <button type="button" class="admin-text-btn" id="back-list">Voltar</button>
+                <h1 id="edit-title">Ensaio</h1>
+            </div>
             <label for="essay-name">Título</label>
             <input id="essay-name" type="text" maxlength="120">
             <div class="admin-checks">
