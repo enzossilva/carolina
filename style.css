@@ -155,43 +155,20 @@ header {
 }
 
 .contact-links a {
-    color: #111;
-    text-decoration: none;
-}
-
-.contact-links a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
-.contact-channels {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2.75rem;
-    margin-top: 2.5rem;
-    font-family: "Catamaran", sans-serif;
-}
-
-.contact-channels a {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.7rem;
     color: #111;
     text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
 }
 
-.contact-channels a:hover span {
+.contact-links a:hover span {
     text-decoration: underline;
     text-underline-offset: 4px;
 }
 
-.contact-channels img {
+.contact-links img {
     width: 28px;
     height: auto;
     display: block;
@@ -281,11 +258,8 @@ footer {
 
     .contact-links {
         flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .contact-channels {
-        gap: 1.75rem;
+        align-items: flex-start;
+        gap: 1.25rem;
     }
 
     .films-grid {
