@@ -256,8 +256,10 @@ def render_index(essays: OrderedDict[str, dict], featured: list[str]) -> str:
         slides.append(
             f'            <div class="carousel-slide">\n'
             f'                <a href="{escape(essay["file"], quote=True)}">\n'
-            f'                    <img src="{escape(essay["cover"], quote=True)}" alt="{escape(essay["title"], quote=True)}">\n'
-            f'                    <span class="slide-title">{escape(essay["title"])}</span>\n'
+            f'                    <div class="image-container">\n'
+            f'                        <img src="{escape(essay["cover"], quote=True)}" alt="{escape(essay["title"], quote=True)}">\n'
+            f'                        <div class="overlay">{escape(essay["title"])}</div>\n'
+            f"                    </div>\n"
             f"                </a>\n"
             f"            </div>"
         )

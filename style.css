@@ -119,16 +119,18 @@ header {
 }
 
 .contact-page {
+    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 120px 8vw 48px;
+    justify-content: center;
+    padding: 96px 8vw 88px;
 }
 
 .contact-info {
     max-width: 640px;
     width: 100%;
-    margin: 0 auto;
+    margin: 10vh auto 0;
     font-family: "Libre Baskerville", Georgia, serif;
     font-size: 1.05rem;
     line-height: 1.75;
@@ -181,8 +183,12 @@ header {
 }
 
 footer {
-    margin-top: auto;
-    padding-top: 3rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 28px;
+    margin-top: 0;
+    padding-top: 0;
     text-align: center;
     font-size: 0.8rem;
     letter-spacing: 0.04em;
@@ -246,7 +252,12 @@ footer {
     }
 
     .contact-page {
-        padding: 104px 8vw 40px;
+        padding: 96px 8vw 80px;
+        justify-content: center;
+    }
+
+    .contact-info {
+        margin-top: 4vh;
     }
 
     .contact-info {

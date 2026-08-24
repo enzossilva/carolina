@@ -35,12 +35,14 @@ body:has(.carousel) {
 }
 
 .carousel-slide a {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
+    position: relative;
+    display: block;
     color: inherit;
     text-decoration: none;
+}
+
+.carousel-slide .image-container {
+    position: relative;
 }
 
 .carousel-slide img {
@@ -49,14 +51,15 @@ body:has(.carousel) {
     max-width: none;
     object-fit: contain;
     display: block;
+    transition: opacity 0.35s ease;
 }
 
-.slide-title {
-    font-family: "Catamaran", sans-serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+.carousel-slide a:hover img {
+    opacity: 0.35;
+}
+
+.carousel-slide a:hover .overlay {
+    opacity: 1;
 }
 
 .carousel-arrow {
@@ -64,8 +67,8 @@ body:has(.carousel) {
     top: 50%;
     transform: translateY(-50%);
     z-index: 15;
-    width: 48px;
-    height: 72px;
+    width: 28px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,8 +91,8 @@ body:has(.carousel) {
 }
 
 .carousel-arrow svg {
-    width: 22px;
-    height: 40px;
+    width: 12px;
+    height: 22px;
     fill: none;
 }
 
@@ -102,7 +105,7 @@ body:has(.carousel) {
 
 .carousel-arrow .arrow-glow {
     stroke: #fff;
-    stroke-width: 4.2;
+    stroke-width: 3.4;
 }
 
 .carousel-arrow-prev {
@@ -132,12 +135,12 @@ body:has(.carousel) {
     }
 
     .carousel-arrow {
-        width: 40px;
-        height: 56px;
+        width: 24px;
+        height: 36px;
     }
 
     .carousel-arrow svg {
-        width: 16px;
-        height: 30px;
+        width: 10px;
+        height: 18px;
     }
 }
