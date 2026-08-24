@@ -11,10 +11,10 @@
     header.innerHTML = `
         <nav class="navbar">
             <ul>
-                ${item("index.html", "home", "CAROLINA", "carolina")}
-                ${item("work.html", "work", "WORK")}
-                ${item("filmes.html", "films", "FILMS")}
-                ${item("contact.html", "contact", "CONTACT")}
+                ${item("/", "home", "CAROLINA", "carolina")}
+                ${item("/work", "work", "WORK")}
+                ${item("/filmes", "films", "FILMS")}
+                ${item("/contact", "contact", "CONTACT")}
             </ul>
         </nav>
     `;

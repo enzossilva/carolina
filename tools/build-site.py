@@ -158,6 +158,21 @@ FILMS = [
 ]
 
 SKIP_PAGES = {"index.html", "work.html", "filmes.html", "contact.html", "404.html"}
+RESERVED_DIRS = {"images", "videos", "data", "tools", "css"}
+
+
+def slug(filename: str) -> str:
+    return filename[:-5] if filename.endswith(".html") else filename
+
+
+def page_href(filename: str) -> str:
+    if filename in {"", "index.html"}:
+        return "/"
+    return f"/{slug(filename)}"
+
+
+def asset(path: str) -> str:
+    return "/" + path.lstrip("/")
 
 
 def unique(items: list[str]) -> list[str]:
@@ -176,6 +191,7 @@ def extract_images(html: str) -> list[str]:
     images = []
     for src in found:
         src = src.strip()
+        src = src.lstrip("/")
         if src.startswith("images/") and not src.endswith(".png"):
             images.append(src)
     return unique(images)
@@ -198,12 +214,15 @@ def collect_essays() -> OrderedDict[str, dict]:
     return essays
 
 
+def canonical_url(page: str = "") -> str:
+    if not page or page in {"index.html", "/"}:
+        return f"{SITE_URL}/"
+    return f"{SITE_URL}/{slug(page)}"
+
+
 def head(title: str, description: str, image: str = "", page: str = "") -> str:
-    if not page or page == "index.html":
-        canonical = f"{SITE_URL}/"
-    else:
-        canonical = f"{SITE_URL}/{page}"
-    og_image = f"{SITE_URL}/{image}" if image else f"{SITE_URL}/images/RIZOMA/8548.JPG"
+    canonical = canonical_url(page)
+    og_image = f"{SITE_URL}/{image.lstrip('/')}" if image else f"{SITE_URL}/images/RIZOMA/8548.JPG"
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -216,9 +235,9 @@ def head(title: str, description: str, image: str = "", page: str = "") -> str:
     <meta property="og:url" content="{escape(canonical, quote=True)}">
     <meta property="og:type" content="website">
     <link rel="canonical" href="{escape(canonical, quote=True)}">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <title>{escape(title)}</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 """
 
 
@@ -231,19 +250,19 @@ def render_essay(essay: dict) -> str:
     for src in essay["images"]:
         slides.append(
             f'            <div class="carousel-slide">\n'
-            f'                <img src="{escape(src, quote=True)}" alt="{escape(essay["title"], quote=True)}">\n'
+            f'                <img src="{escape(asset(src), quote=True)}" alt="{escape(essay["title"], quote=True)}">\n'
             f"            </div>"
         )
-    return f"""{head(f'{essay["title"]} — Carolina Cristine', f'{essay["title"]} — ensaio de Carolina Cristine.', essay["cover"], essay["file"])}    <link rel="stylesheet" href="carousel.css">
+    return f"""{head(f'{essay["title"]} — Carolina Cristine', f'{essay["title"]} — ensaio de Carolina Cristine.', essay["cover"], essay["file"])}    <link rel="stylesheet" href="/carousel.css">
 </head>
 <body data-page="work">
-    <script src="nav.js"></script>
+    <script src="/nav.js"></script>
     <div class="carousel">
         <div class="carousel-container">
 {chr(10).join(slides)}
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
 """
@@ -255,24 +274,24 @@ def render_index(essays: OrderedDict[str, dict], featured: list[str]) -> str:
         essay = essays[filename]
         slides.append(
             f'            <div class="carousel-slide">\n'
-            f'                <a href="{escape(essay["file"], quote=True)}">\n'
+            f'                <a href="{escape(page_href(essay["file"]), quote=True)}">\n'
             f'                    <div class="image-container">\n'
-            f'                        <img src="{escape(essay["cover"], quote=True)}" alt="{escape(essay["title"], quote=True)}">\n'
+            f'                        <img src="{escape(asset(essay["cover"]), quote=True)}" alt="{escape(essay["title"], quote=True)}">\n'
             f'                        <div class="overlay">{escape(essay["title"])}</div>\n'
             f"                    </div>\n"
             f"                </a>\n"
             f"            </div>"
         )
-    return f"""{head("Carolina Cristine", SITE_DESCRIPTION, essays["rizoma.html"]["cover"], "index.html")}    <link rel="stylesheet" href="carousel.css">
+    return f"""{head("Carolina Cristine", SITE_DESCRIPTION, essays["rizoma.html"]["cover"], "")}    <link rel="stylesheet" href="/carousel.css">
 </head>
 <body data-page="home">
-    <script src="nav.js"></script>
+    <script src="/nav.js"></script>
     <div class="carousel">
         <div class="carousel-container">
 {chr(10).join(slides)}
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
 """
@@ -283,16 +302,16 @@ def render_work(essays: OrderedDict[str, dict], work: list[str]) -> str:
     for filename in work:
         essay = essays[filename]
         cards.append(
-            f'        <a href="{escape(essay["file"], quote=True)}">\n'
+            f'        <a href="{escape(page_href(essay["file"]), quote=True)}">\n'
             f'            <div class="image-container">\n'
-            f'                <img loading="lazy" src="{escape(essay["cover"], quote=True)}" alt="{escape(essay["title"], quote=True)}">\n'
+            f'                <img loading="lazy" src="{escape(asset(essay["cover"]), quote=True)}" alt="{escape(essay["title"], quote=True)}">\n'
             f'                <div class="overlay">{escape(essay["title"])}</div>\n'
             f"            </div>\n"
             f"        </a>"
         )
-    return f"""{head("Work — Carolina Cristine", "Ensaios e trabalhos de Carolina Cristine.", essays[work[0]]["cover"], "work.html")}</head>
+    return f"""{head("Work — Carolina Cristine", "Ensaios e trabalhos de Carolina Cristine.", essays[work[0]]["cover"], "work")}</head>
 <body data-page="work">
-    <script src="nav.js"></script>
+    <script src="/nav.js"></script>
     <div class="gallery">
 {chr(10).join(cards)}
     </div>
@@ -307,12 +326,12 @@ def render_films(films: list[dict]) -> str:
         items.append(
             f'            <article class="film">\n'
             f"                <h2>{escape(film['title'])}</h2>\n"
-            f'                <video src="{escape(film["src"], quote=True)}" controls playsinline preload="metadata"></video>\n'
+            f'                <video src="{escape(asset(film["src"]), quote=True)}" controls playsinline preload="metadata"></video>\n'
             f"            </article>"
         )
-    return f"""{head("Films — Carolina Cristine", "Filmes de Carolina Cristine.", "", "filmes.html")}</head>
+    return f"""{head("Films — Carolina Cristine", "Filmes de Carolina Cristine.", "", "filmes")}</head>
 <body data-page="films">
-    <script src="nav.js"></script>
+    <script src="/nav.js"></script>
     <main class="films-page">
         <div class="films-grid">
 {chr(10).join(items)}
@@ -324,9 +343,9 @@ def render_films(films: list[dict]) -> str:
 
 
 def render_contact() -> str:
-    return f"""{head("Contact — Carolina Cristine", "Contato de Carolina Cristine, fotógrafa e diretora em São Paulo.", "", "contact.html")}</head>
+    return f"""{head("Contact — Carolina Cristine", "Contato de Carolina Cristine, fotógrafa e diretora em São Paulo.", "", "contact")}</head>
 <body data-page="contact">
-    <script src="nav.js"></script>
+    <script src="/nav.js"></script>
     <main class="contact-page">
         <div class="contact-info">
             <p>Carolina Cristine é fotógrafa, diretora e idealizadora de projetos criativos, residente em São Paulo.</p>
@@ -336,19 +355,19 @@ def render_contact() -> str:
                 <li>
                     <a href="mailto:carolinacristine.ferreira@gmail.com">
                         <span>carolinacristine.ferreira@gmail.com</span>
-                        <img src="images/gmail.png" alt="">
+                        <img src="/images/gmail.png" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="https://www.instagram.com/cacristine___" target="_blank" rel="noopener noreferrer">
                         <span>Instagram</span>
-                        <img src="images/instagram.png" alt="">
+                        <img src="/images/instagram.png" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="https://wa.me/5511944649361" target="_blank" rel="noopener noreferrer">
                         <span>WhatsApp</span>
-                        <img src="images/whatsapp.png" alt="">
+                        <img src="/images/whatsapp.png" alt="">
                     </a>
                 </li>
             </ul>
@@ -363,15 +382,15 @@ def render_contact() -> str:
 
 
 def render_404() -> str:
-    return f"""{head("Página não encontrada — Carolina Cristine", SITE_DESCRIPTION, "", "404.html")}</head>
+    return f"""{head("Página não encontrada — Carolina Cristine", SITE_DESCRIPTION, "", "404")}</head>
 <body data-page="home">
-    <script src="nav.js"></script>
+    <script src="/nav.js"></script>
     <main class="contact-page">
         <div class="contact-info">
             <p>Página não encontrada.</p>
             <ul class="contact-links">
-                <li><a href="index.html">Voltar ao início</a></li>
-                <li><a href="work.html">Ver trabalhos</a></li>
+                <li><a href="/">Voltar ao início</a></li>
+                <li><a href="/work">Ver trabalhos</a></li>
             </ul>
         </div>
     </main>
@@ -380,11 +399,36 @@ def render_404() -> str:
 """
 
 
+def render_redirect(pretty: str) -> str:
+    target = pretty if pretty.startswith("/") else page_href(pretty)
+    absolute = f"{SITE_URL}{target}" if target != "/" else f"{SITE_URL}/"
+    return f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url={escape(target, quote=True)}">
+    <link rel="canonical" href="{escape(absolute, quote=True)}">
+    <title>Redirect</title>
+    <script>location.replace({target!r});</script>
+</head>
+<body></body>
+</html>
+"""
+
+
+def write_pretty(name: str, html: str) -> None:
+    if name in RESERVED_DIRS:
+        raise SystemExit(f"refusing to write page into reserved folder: {name}")
+    dest = ROOT / name
+    dest.mkdir(parents=True, exist_ok=True)
+    write(dest / "index.html", html)
+
+
 def render_sitemap(essays: OrderedDict[str, dict]) -> str:
-    pages = ["index.html", "work.html", "filmes.html", "contact.html", *essays.keys()]
+    pages = ["", "work", "filmes", "contact", *[slug(name) for name in essays]]
     urls = []
     for page in pages:
-        loc = f"{SITE_URL}/" if page == "index.html" else f"{SITE_URL}/{page}"
+        loc = f"{SITE_URL}/" if not page else f"{SITE_URL}/{page}"
         urls.append(f"  <url><loc>{escape(loc)}</loc></url>")
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -429,12 +473,17 @@ def main() -> None:
         raise SystemExit(f"essays without images: {empty}")
 
     for essay in essays.values():
-        write(ROOT / essay["file"], render_essay(essay))
+        name = slug(essay["file"])
+        write_pretty(name, render_essay(essay))
+        write(ROOT / essay["file"], render_redirect(name))
 
     write(ROOT / "index.html", render_index(essays, featured))
-    write(ROOT / "work.html", render_work(essays, work))
-    write(ROOT / "filmes.html", render_films(films))
-    write(ROOT / "contact.html", render_contact())
+    write_pretty("work", render_work(essays, work))
+    write_pretty("filmes", render_films(films))
+    write_pretty("contact", render_contact())
+    write(ROOT / "work.html", render_redirect("work"))
+    write(ROOT / "filmes.html", render_redirect("filmes"))
+    write(ROOT / "contact.html", render_redirect("contact"))
     write(ROOT / "404.html", render_404())
     write(ROOT / "sitemap.xml", render_sitemap(essays))
     write(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
