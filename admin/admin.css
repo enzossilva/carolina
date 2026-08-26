@@ -93,7 +93,134 @@
     font-size: 1rem;
 }
 
-.admin-main button:not(.admin-nav-btn):not(.essay-card),
+.admin-tabs {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+}
+
+.admin-tab,
+.admin-main .home-tool {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    color: #111;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: auto;
+}
+
+.admin-tab.is-on {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.admin-hint {
+    max-width: 720px;
+    margin: 0.25rem 0 1rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.home-panel {
+    display: none;
+    padding: 18px 2rem 64px;
+}
+
+.home-panel.is-on {
+    display: block;
+}
+
+.admin-body,
+.admin-body:has(.carousel) {
+    overflow: auto;
+    height: auto;
+}
+
+.home-preview {
+    position: relative;
+    margin: 0 -2rem 1.75rem;
+}
+
+.admin-home-carousel.carousel {
+    height: 58vh;
+    padding: 8px 3.2rem 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.admin-home-carousel .carousel-slide {
+    margin-right: 28px;
+}
+
+.admin-home-carousel .carousel-slide img {
+    height: calc(58vh - 88px);
+}
+
+.admin-home-carousel .image-container:hover img {
+    opacity: 0.35;
+}
+
+.admin-home-carousel .image-container:hover .overlay {
+    opacity: 1;
+}
+
+.home-slide-tools {
+    display: flex;
+    justify-content: center;
+    gap: 0.85rem;
+    margin-top: 0.55rem;
+}
+
+.home-preview .carousel-arrow {
+    position: absolute;
+    top: 42%;
+}
+
+.home-hint {
+    max-width: 640px;
+    margin: 0.25rem 0 1rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.home-add {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.5rem 0 1.25rem;
+}
+
+.home-add label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.home-add select {
+    min-width: 220px;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.admin-gallery:not(.is-on) {
+    display: none;
+}
+
+#new-essay:not(.is-on) {
+    display: none;
+}
+
+.admin-main button:not(.admin-nav-btn):not(.admin-tab):not(.essay-card):not(.home-tool),
 .file-btn {
     appearance: none;
     border: 1px solid #111;
@@ -264,7 +391,26 @@
         padding-right: 8vw;
     }
 
-    .admin-nav-btn {
+    .admin-nav-btn,
+    .admin-tab {
         font-size: 0.68rem;
+    }
+
+    .home-panel {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
+
+    .home-preview {
+        margin-left: -0.85rem;
+        margin-right: -0.85rem;
+    }
+
+    .admin-home-carousel.carousel {
+        height: 46vh;
+    }
+
+    .admin-home-carousel .carousel-slide img {
+        height: calc(46vh - 88px);
     }
 }

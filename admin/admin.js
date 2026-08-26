@@ -12,6 +12,16 @@
     const loginForm = document.getElementById("login-form");
     const loginError = document.getElementById("login-error");
     const essayList = document.getElementById("essay-list");
+    const homePanel = document.getElementById("home-panel");
+    const homeTrack = document.getElementById("home-carousel-track");
+    const homeCarousel = document.getElementById("home-carousel");
+    const homePreview = document.querySelector(".home-preview");
+    const homeAddSelect = document.getElementById("home-add-select");
+    const homeStatus = document.getElementById("home-status");
+    const homeError = document.getElementById("home-error");
+    const tabHome = document.getElementById("tab-home");
+    const tabEssays = document.getElementById("tab-essays");
+    const newEssayBtn = document.getElementById("new-essay");
     const photoGrid = document.getElementById("photo-grid");
     const editStatus = document.getElementById("edit-status");
     const editError = document.getElementById("edit-error");
@@ -27,6 +37,8 @@
     let editing = null;
     let photos = [];
     let photoSeq = 0;
+    let listTab = "home";
+    let featuredDraft = [];
 
     function apiBase() {
         return String(window.ADMIN_API || "").replace(/\/$/, "");
@@ -130,9 +142,214 @@
         if (editing) {
             show(listView, false);
             show(editView, true);
+            return;
+        }
+        show(listView, true);
+        show(editView, false);
+        showListTab();
+    }
+
+    function showListTab() {
+        const onHomeTab = listTab === "home";
+        show(homePanel, onHomeTab);
+        show(essayList, !onHomeTab);
+        show(newEssayBtn, !onHomeTab);
+        tabHome.classList.toggle("is-on", onHomeTab);
+        tabEssays.classList.toggle("is-on", !onHomeTab);
+        if (onHomeTab) {
+            renderHome();
+        }
+    }
+
+    function essayByFile(file) {
+        return (site.essays || []).find((item) => item.file === file);
+    }
+
+    function essayIndex(file) {
+        return (site.essays || []).findIndex((item) => item.file === file);
+    }
+
+    function syncFeaturedDraft() {
+        const valid = new Set((site.essays || []).map((item) => item.file));
+        featuredDraft = featuredDraft.filter((file) => valid.has(file));
+    }
+
+    function renderHome() {
+        syncFeaturedDraft();
+        homeTrack.innerHTML = "";
+        featuredDraft.forEach((file, index) => {
+            const essay = essayByFile(file);
+            if (!essay) {
+                return;
+            }
+            const slide = document.createElement("div");
+            slide.className = "carousel-slide";
+            const wrap = document.createElement("div");
+            wrap.className = "image-container";
+            const img = document.createElement("img");
+            img.src = "/" + String(essay.cover || "").replace(/^\//, "");
+            img.alt = essay.title || "";
+            const overlay = document.createElement("div");
+            overlay.className = "overlay";
+            overlay.textContent = essay.title;
+            wrap.append(img, overlay);
+            wrap.addEventListener("click", () => openEdit(essayIndex(file)));
+            const tools = document.createElement("div");
+            tools.className = "home-slide-tools";
+            function tool(label, fn) {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "home-tool";
+                btn.textContent = label;
+                btn.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    fn();
+                });
+                return btn;
+            }
+            tools.append(
+                tool("←", () => moveHome(index, -1)),
+                tool("→", () => moveHome(index, 1)),
+                tool("Editar", () => openEdit(essayIndex(file))),
+                tool("Tirar", () => removeHome(index))
+            );
+            slide.append(wrap, tools);
+            homeTrack.appendChild(slide);
+        });
+
+        const taken = new Set(featuredDraft);
+        const extras = (site.essays || []).filter((essay) => !taken.has(essay.file));
+        homeAddSelect.innerHTML = "";
+        if (!extras.length) {
+            const opt = document.createElement("option");
+            opt.value = "";
+            opt.textContent = "Todos já estão na home";
+            homeAddSelect.appendChild(opt);
         } else {
-            show(listView, true);
-            show(editView, false);
+            extras.forEach((essay) => {
+                const opt = document.createElement("option");
+                opt.value = essay.file;
+                opt.textContent = essay.title;
+                homeAddSelect.appendChild(opt);
+            });
+        }
+        homeAddSelect.disabled = extras.length === 0;
+        bindHomeCarousel();
+    }
+
+    function moveHome(index, delta) {
+        const next = index + delta;
+        if (next < 0 || next >= featuredDraft.length) {
+            return;
+        }
+        const item = featuredDraft.splice(index, 1)[0];
+        featuredDraft.splice(next, 0, item);
+        renderHome();
+    }
+
+    function removeHome(index) {
+        featuredDraft.splice(index, 1);
+        renderHome();
+    }
+
+    function addHome() {
+        const file = homeAddSelect.value;
+        if (!file || featuredDraft.includes(file)) {
+            return;
+        }
+        featuredDraft.push(file);
+        renderHome();
+    }
+
+    let homeCarouselBound = false;
+
+    function bindHomeCarousel() {
+        if (!homeCarousel || !homePreview) {
+            return;
+        }
+        homePreview.querySelectorAll(".carousel-arrow").forEach((btn) => btn.remove());
+        if (!featuredDraft.length) {
+            return;
+        }
+
+        const prev = document.createElement("button");
+        prev.type = "button";
+        prev.className = "carousel-arrow carousel-arrow-prev";
+        prev.setAttribute("aria-label", "Foto anterior");
+        prev.innerHTML = '<svg viewBox="0 0 24 48" aria-hidden="true"><path class="arrow-glow" d="M18 4 6 24l12 20"/><path d="M18 4 6 24l12 20"/></svg>';
+        const next = document.createElement("button");
+        next.type = "button";
+        next.className = "carousel-arrow carousel-arrow-next";
+        next.setAttribute("aria-label", "Próxima foto");
+        next.innerHTML = '<svg viewBox="0 0 24 48" aria-hidden="true"><path class="arrow-glow" d="M6 4l12 20L6 44"/><path d="M6 4l12 20L6 44"/></svg>';
+        homePreview.append(prev, next);
+
+        const slideStep = () => {
+            const slide = homeCarousel.querySelector(".carousel-slide");
+            if (!slide) {
+                return 240;
+            }
+            const styles = getComputedStyle(slide);
+            return slide.getBoundingClientRect().width + parseFloat(styles.marginRight || "0");
+        };
+        const updateArrows = () => {
+            const maxScroll = homeCarousel.scrollWidth - homeCarousel.clientWidth - 8;
+            prev.disabled = homeCarousel.scrollLeft <= 8;
+            next.disabled = homeCarousel.scrollLeft >= maxScroll;
+        };
+        const scrollBySlide = (direction) => {
+            homeCarousel.scrollBy({ left: direction * slideStep(), behavior: "smooth" });
+        };
+        prev.addEventListener("click", () => scrollBySlide(-1));
+        next.addEventListener("click", () => scrollBySlide(1));
+        if (!homeCarouselBound) {
+            homeCarouselBound = true;
+            homeCarousel.addEventListener("scroll", () => {
+                const arrows = homePreview.querySelectorAll(".carousel-arrow");
+                if (arrows.length < 2) {
+                    return;
+                }
+                const maxScroll = homeCarousel.scrollWidth - homeCarousel.clientWidth - 8;
+                arrows[0].disabled = homeCarousel.scrollLeft <= 8;
+                arrows[1].disabled = homeCarousel.scrollLeft >= maxScroll;
+            }, { passive: true });
+            homeCarousel.addEventListener("wheel", (event) => {
+                if (Math.abs(event.deltaY) < 50) {
+                    return;
+                }
+                event.preventDefault();
+                homeCarousel.scrollLeft += event.deltaY * 7;
+            }, { passive: false });
+        }
+        requestAnimationFrame(() => {
+            updateArrows();
+        });
+    }
+
+    async function saveHome() {
+        const next = JSON.parse(JSON.stringify(site));
+        next.featured = featuredDraft.slice();
+        const saveHomeBtn = document.getElementById("save-home");
+        saveHomeBtn.disabled = true;
+        setText(homeError, "");
+        setText(homeStatus, "Publicando… o site atualiza em 1–2 minutos.");
+        try {
+            await api("/publish", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    site: next,
+                    files: [],
+                    message: "Update home carousel from admin.",
+                }),
+            });
+            site = next;
+            setText(homeStatus, "Home publicada. Atualize a página inicial em 1–2 minutos.");
+        } catch (error) {
+            setText(homeStatus, "");
+            setText(homeError, error.message);
+        } finally {
+            saveHomeBtn.disabled = false;
         }
     }
 
@@ -186,7 +403,7 @@
             contentBase64: null,
         }));
         titleInput.value = editing.title || "";
-        onHome.checked = Boolean(editing.file) && (site.featured || []).includes(editing.file);
+        onHome.checked = Boolean(editing.file) && featuredDraft.includes(editing.file);
         onWork.checked = Boolean(editing.file) && (site.work || []).includes(editing.file);
         editHeading.textContent = editing.isNew ? "Novo ensaio" : editing.title;
         show(deleteBtn, !editing.isNew);
@@ -327,11 +544,11 @@
     }
 
     function setList(list, file, include) {
-        const next = (list || []).filter((item) => item !== file);
+        const current = list || [];
         if (include) {
-            next.push(file);
+            return current.includes(file) ? current.slice() : current.concat(file);
         }
-        return next;
+        return current.filter((item) => item !== file);
     }
 
     async function saveEssay() {
@@ -383,7 +600,7 @@
         } else {
             next.essays.push(essay);
         }
-        next.featured = setList(next.featured, essay.file, onHome.checked);
+        next.featured = setList(featuredDraft, essay.file, onHome.checked);
         next.work = setList(next.work, essay.file, onWork.checked);
 
         saveBtn.disabled = true;
@@ -401,6 +618,7 @@
                 }),
             });
             site = next;
+            featuredDraft = (next.featured || []).slice();
             editing = null;
             renderList();
             showApp();
@@ -439,6 +657,7 @@
                 }),
             });
             site = next;
+            featuredDraft = (next.featured || []).slice();
             editing = null;
             renderList();
             showApp();
@@ -454,6 +673,7 @@
     async function loadSite() {
         const data = await api("/site");
         site = data.site;
+        featuredDraft = (site.featured || []).slice();
         renderList();
         showApp();
     }
@@ -478,10 +698,39 @@
         setToken("");
         site = null;
         editing = null;
+        featuredDraft = [];
         showApp();
     });
 
-    document.getElementById("new-essay").addEventListener("click", () => openEdit("new"));
+    tabHome.addEventListener("click", () => {
+        listTab = "home";
+        showListTab();
+    });
+    tabEssays.addEventListener("click", () => {
+        listTab = "essays";
+        showListTab();
+    });
+    document.getElementById("home-add-btn").addEventListener("click", addHome);
+    document.getElementById("save-home").addEventListener("click", () => {
+        saveHome().catch((error) => setText(homeError, error.message));
+    });
+    document.addEventListener("keydown", (event) => {
+        if (listTab !== "home" || editing || !listView.classList.contains("is-on")) {
+            return;
+        }
+        const arrows = homePreview.querySelectorAll(".carousel-arrow");
+        if (event.key === "ArrowLeft" && arrows[0]) {
+            arrows[0].click();
+        }
+        if (event.key === "ArrowRight" && arrows[1]) {
+            arrows[1].click();
+        }
+    });
+
+    document.getElementById("new-essay").addEventListener("click", () => {
+        listTab = "essays";
+        openEdit("new");
+    });
     document.getElementById("back-list").addEventListener("click", () => {
         editing = null;
         setText(editError, "");

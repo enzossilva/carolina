@@ -7,7 +7,8 @@
     <title>Admin — Carolina Cristine</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/admin/admin.css?v=3">
+    <link rel="stylesheet" href="/carousel.css">
+    <link rel="stylesheet" href="/admin/admin.css?v=5">
 </head>
 <body class="admin-body" data-page="admin">
     <header>
@@ -39,8 +40,27 @@
 
         <section id="list-view" class="screen">
             <div class="admin-toolbar">
-                <h1>Ensaios</h1>
+                <div class="admin-tabs">
+                    <button type="button" class="admin-tab is-on" id="tab-home">Home</button>
+                    <button type="button" class="admin-tab" id="tab-essays">Ensaios</button>
+                </div>
                 <button type="button" id="new-essay">Novo ensaio</button>
+            </div>
+            <div id="home-panel" class="home-panel is-on">
+                <p class="admin-hint">Prévia da home. Passe as capas como no site; use as setas para mudar a ordem.</p>
+                <div class="home-preview">
+                    <div id="home-carousel" class="carousel admin-home-carousel">
+                        <div id="home-carousel-track" class="carousel-container"></div>
+                    </div>
+                </div>
+                <div class="home-add">
+                    <label for="home-add-select">Adicionar à home</label>
+                    <select id="home-add-select"></select>
+                    <button type="button" id="home-add-btn">Adicionar</button>
+                </div>
+                <p class="admin-status" id="home-status"></p>
+                <p class="admin-error" id="home-error"></p>
+                <button type="button" id="save-home">Salvar e publicar</button>
             </div>
             <div id="essay-list" class="gallery admin-gallery"></div>
         </section>
@@ -72,6 +92,6 @@
         </section>
     </main>
     <script src="/admin/config.js"></script>
-    <script src="/admin/admin.js?v=3"></script>
+    <script src="/admin/admin.js?v=5"></script>
 </body>
 </html>
