@@ -273,9 +273,13 @@
 }
 
 .edit-screen.is-on {
-    padding: 96px 8vw 64px;
-    max-width: 980px;
-    margin: 0 auto;
+    padding: 96px 8vw 64px 1.35rem;
+    max-width: none;
+    margin: 0;
+}
+
+#back-list {
+    margin-left: 0;
 }
 
 .edit-top {
@@ -387,7 +391,7 @@
 
     .login-screen.is-on,
     .edit-screen.is-on {
-        padding-left: 8vw;
+        padding-left: 0.85rem;
         padding-right: 8vw;
     }
 
